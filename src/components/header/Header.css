@@ -20,6 +20,7 @@ header{
     outline: none;
     border: 1px solid #DDD;
     transition: .3s;
+    color: #808080;
 }
 
 .header_content .header_search input:focus{

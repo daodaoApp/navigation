@@ -8,6 +8,7 @@ import './Header.css';
  *  @prop {string} value --- input输入框的值
  *  @prop {bool} autoFocus --- input是否自动获得焦点
  *  @prop { (value) => void } onChange --- input值发生变化的回调
+ *  @prop {any} slogan --- header的标题
  */
 
 export default class HeaderComponent extends React.Component {
@@ -15,6 +16,7 @@ static propTypes = {
   value: PropTypes.string,
   autoFocus: PropTypes.bool,
   onChange: PropTypes.func,
+  slogan: PropTypes.any,
 }
 
 constructor(props) {
@@ -41,12 +43,12 @@ onChange(e) {
 }
 
 render() {
-  const { value } = this.props;
+  const { value, slogan } = this.props;
   return (
     <header>
       <div className="header_content">
         <div className="header_slogan">
-        DFG - 内网导航
+          {slogan}
         </div>
 
         <div className="header_search">
@@ -66,4 +68,5 @@ HeaderComponent.defaultProps = {
   value: '',
   autoFocus: true,
   onChange: f => f,
+  slogan: '',
 };
