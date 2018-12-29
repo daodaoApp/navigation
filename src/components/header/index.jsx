@@ -22,7 +22,7 @@ static propTypes = {
 constructor(props) {
   super(props);
   this.state = {};
-  this.input = React.createContext();
+  this.input = React.createRef();
   this.onFocus = this.onFocus.bind(this);
   this.onChange = this.onChange.bind(this);
 }
