@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import NavListItem from './NavListItem';
 import './NavList.css';
 
 export default class NavList extends React.Component {
@@ -23,7 +24,7 @@ renderNoContent() {
 renderNavList() {
   const { dataSource } = this.props;
   if (dataSource.length < 1) { return this.renderNoContent(); }
-  return null;
+  return dataSource.map(dataSourceItem => <NavListItem navList={dataSourceItem} key={dataSourceItem.title} />);
 }
 
 render() {

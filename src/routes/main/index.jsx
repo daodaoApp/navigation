@@ -2,6 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import Header from '../../components/header';
 import NavList from '../../components/navList';
+import navListDataSource from '../../../config';
 
 export default class MainPage extends React.Component {
 static propTypes = {}
@@ -10,11 +11,19 @@ static filterDataSource(dataSource) {
   return dataSource;
 }
 
+static initDataSource() {
+  const initDataSource = navListDataSource.map((dataSourceItem) => {
+    dataSourceItem.priority = 0;
+    return dataSourceItem;
+  });
+  return initDataSource;
+}
+
 constructor(props) {
   super(props);
   this.state = {
     searchValue: '',
-    dataSource: [],
+    dataSource: navListDataSource,
     target: {
       link: 'https://www.baidu.com',
     },
@@ -64,4 +73,3 @@ render() {
   );
 }
 }
-MainPage.defaultProps = {};
