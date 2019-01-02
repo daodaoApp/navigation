@@ -18,27 +18,6 @@ const navList = [
         url: 'https://www.github.com',
         priority: 0,
       },
-      {
-        text: 'FE',
-        url: 'http://oa.huiyin.com',
-        priority: 0,
-      },
-    ],
-  },
-  {
-    title: '综合',
-    weight: 0,
-    payload: [
-      {
-        text: 'OA',
-        url: 'http://oa.huiyin.com',
-        priority: 0,
-      },
-      {
-        text: 'FE',
-        url: 'http://oa.huiyin.com',
-        priority: 0,
-      },
     ],
   },
 ];

@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import Header from '../../components/header';
 import NavList from '../../components/navList';
-import navListDataSource from '../../../config';
+import navListDataSource from '../../../_config';
 
 export default class MainPage extends React.Component {
 static propTypes = {}
