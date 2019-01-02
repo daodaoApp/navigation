@@ -16,7 +16,7 @@ constructor(props) {
     target: { link: 'https://www.baidu.com' },
   };
   this.onSearchValueChange = this.onSearchValueChange.bind(this);
-  this.onSearch = this.onSearch.bind(this);
+  // this.onSearch = this.onSearch.bind(this);
   this.handleEnterJump = this.handleEnterJump.bind(this);
   this.filterDataSource = this.filterDataSource.bind(this);
   this.filerNavItem = this.filerNavItem.bind(this);
@@ -26,7 +26,6 @@ constructor(props) {
 
   this.matchestNav = {};
   this.initMatchest();
-  console.log(this.matchestNav);
 }
 
 
@@ -35,9 +34,9 @@ componentDidMount() {
 }
 
 
-onSearch() {
-  return true;
-}
+// onSearch() {
+//   return true;
+// }
 
 onSearchValueChange(value) {
   this.setState({ searchValue: value }, () => this.filterDataSource());
@@ -81,8 +80,20 @@ calNavItemWeight(navItem, titleWeight) {
 storeMatchest(navItem) {
   const { priority: navItemWeight } = navItem;
   const { priority: matchestWeight } = this.matchestNav;
-  if (navItemWeight > matchestWeight) { this.matchestNav = navItem; }
-  console.log(this.matchestNav);
+  const { searchValue } = this.state;
+  if (navItemWeight > matchestWeight) {
+    this.matchestNav = navItem;
+    this.storeJumplink();
+  }
+  if (!searchValue) {
+    this.initMatchest();
+    this.storeJumplink();
+  }
+}
+
+storeJumplink() {
+  const { url } = this.matchestNav;
+  this.setState({ target: { link: url } });
 }
 
 initMatchest() {
