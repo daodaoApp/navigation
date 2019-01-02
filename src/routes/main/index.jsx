@@ -7,10 +7,6 @@ import navListDataSource from '../../../config';
 export default class MainPage extends React.Component {
 static propTypes = {}
 
-static filterDataSource(dataSource) {
-  return dataSource;
-}
-
 static initDataSource() {
   const initDataSource = navListDataSource.map((dataSourceItem) => {
     dataSourceItem.priority = 0;
@@ -24,32 +20,36 @@ constructor(props) {
   this.state = {
     searchValue: '',
     dataSource: navListDataSource,
-    target: {
-      link: 'https://www.baidu.com',
-    },
+    target: { link: 'https://www.baidu.com' },
   };
   this.onSearchValueChange = this.onSearchValueChange.bind(this);
   this.onSearch = this.onSearch.bind(this);
   this.handleEnterJump = this.handleEnterJump.bind(this);
+  this.filterDataSource = this.filterDataSource.bind(this);
 }
 
 
 componentDidMount() {
-  this.enterJump = window.addEventListener('keydown', this.handleEnterJump);
-}
-
-componentWillUnmount() {
-
+  window.addEventListener('keydown', this.handleEnterJump);
 }
 
 
 onSearch() {
-  const { searchValue } = this.state;
-  console.log(searchValue);
+  return true;
 }
 
 onSearchValueChange(value) {
-  this.setState({ searchValue: value });
+  this.setState({ searchValue: value }, () => this.filterDataSource());
+}
+
+filterDataSource() {
+  const { searchValue, dataSource } = this.state;
+  const weightDataSource = dataSource.map((dataSourceItem) => {
+    const match = dataSourceItem.title.match(searchValue);
+    if (match) { dataSourceItem.weight = 1; } else { dataSourceItem.weight = -1; }
+    return dataSourceItem;
+  });
+  this.setState({ dataSource: weightDataSource });
 }
 
 
@@ -68,7 +68,7 @@ render() {
   return (
     <React.Fragment>
       <Header slogan="DFG-内网导航" value={searchValue} onChange={this.onSearchValueChange} autoFoucs />
-      <NavList dataSource={dataSource} />
+      <NavList dataSource={dataSource} searchValue={searchValue} />
     </React.Fragment>
   );
 }

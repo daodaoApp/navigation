@@ -1,6 +1,7 @@
 const navList = [
   {
-    title: '前端开发',
+    title: '前端',
+    weight: 0,
     payload: [
       {
         text: '百度',
@@ -15,6 +16,17 @@ const navList = [
       {
         text: 'GitHub',
         url: 'https://www.github.com',
+        priority: 0,
+      },
+    ],
+  },
+  {
+    title: '综合',
+    weight: 0,
+    payload: [
+      {
+        text: 'OA',
+        url: 'http://oa.huiyin.com',
         priority: 0,
       },
     ],

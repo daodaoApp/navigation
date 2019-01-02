@@ -24,7 +24,8 @@ renderNoContent() {
 renderNavList() {
   const { dataSource } = this.props;
   if (dataSource.length < 1) { return this.renderNoContent(); }
-  return dataSource.map(dataSourceItem => <NavListItem navList={dataSourceItem} key={dataSourceItem.title} />);
+  const filterDataSource = dataSource.filter(dataSourceItem => dataSourceItem.payload.length > 0);
+  return filterDataSource.map(dataSourceItem => <NavListItem navList={dataSourceItem} key={dataSourceItem.title} />);
 }
 
 render() {

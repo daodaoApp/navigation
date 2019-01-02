@@ -1,0 +1,19 @@
+.nav_list_item{
+  border: 1px solid #DADADA;
+  text-align: center;
+  width: 200px;
+  margin: 20px;
+}
+
+.nav_list_item_content a{
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  text-decoration: none;
+  border-top: 1px solid #DADADA;
+  color: black;
+  transition: .3s;
+}
+
+.nav_list_item_content a:visited{ color: black; }
+.nav_list_item_content a:hover{ color: #00BCFF; }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './NavListItem.css';
 
 export default class NavListItem extends React.Component {
 static propTypes = {
@@ -22,11 +23,9 @@ renderNavList() {
   const filterPayLoad = payload.filter(payloadItem => payloadItem.priority >= 0);
   const navListItem = filterPayLoad.map((payloadItem) => {
     const { url, text } = payloadItem;
-
     return <a href={url} target="_blank" key={url} rel="noopener noreferrer">{text}</a>;
   });
   return navListItem;
-  // console.log(navListItem);
 }
 
 
@@ -34,7 +33,7 @@ render() {
   const { navList: { title } } = this.props;
   return (
     <div className="nav_list_item">
-      {title}
+      <h3>{title}</h3>
       <div className="nav_list_item_content">
         {this.renderNavList()}
       </div>
