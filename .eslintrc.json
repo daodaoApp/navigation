@@ -11,6 +11,7 @@
         "react/destructuring-assignment": "off",
         "jsx-a11y/label-has-associated-control": "off",
         "no-param-reassign": "off",
-        "max-len":["error", 200]
+        "max-len":["error", 200],
+        "no-underscore-dangle":"off"
     }
 }

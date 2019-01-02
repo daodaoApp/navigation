@@ -14,6 +14,7 @@ constructor(props) {
   this.state = {};
   this.renderNavList = this.renderNavList.bind(this);
   this.renderNoContent = this.renderNoContent.bind(this);
+  this.filterDataSource = this.filterDataSource.bind(this);
 }
 
 renderNoContent() {
@@ -26,6 +27,10 @@ renderNavList() {
   if (dataSource.length < 1) { return this.renderNoContent(); }
   const filterDataSource = dataSource.filter(dataSourceItem => dataSourceItem.payload.length > 0);
   return filterDataSource.map(dataSourceItem => <NavListItem navList={dataSourceItem} key={dataSourceItem.title} />);
+}
+
+filterDataSource() {
+  const { dataSource, searchValue } = this.props;
 }
 
 render() {

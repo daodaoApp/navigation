@@ -1,6 +1,6 @@
 const navList = [
   {
-    title: '前端',
+    title: 'FE',
     weight: 0,
     payload: [
       {

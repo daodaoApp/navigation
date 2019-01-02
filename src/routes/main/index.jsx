@@ -7,13 +7,6 @@ import navListDataSource from '../../../config';
 export default class MainPage extends React.Component {
 static propTypes = {}
 
-static initDataSource() {
-  const initDataSource = navListDataSource.map((dataSourceItem) => {
-    dataSourceItem.priority = 0;
-    return dataSourceItem;
-  });
-  return initDataSource;
-}
 
 constructor(props) {
   super(props);
@@ -26,6 +19,14 @@ constructor(props) {
   this.onSearch = this.onSearch.bind(this);
   this.handleEnterJump = this.handleEnterJump.bind(this);
   this.filterDataSource = this.filterDataSource.bind(this);
+  this.filerNavItem = this.filerNavItem.bind(this);
+  this.calNavItemWeight = this.calNavItemWeight.bind(this);
+  this.storeMatchest = this.storeMatchest.bind(this);
+  this.initMatchest = this.initMatchest.bind(this);
+
+  this.matchestNav = {};
+  this.initMatchest();
+  console.log(this.matchestNav);
 }
 
 
@@ -45,11 +46,50 @@ onSearchValueChange(value) {
 filterDataSource() {
   const { searchValue, dataSource } = this.state;
   const weightDataSource = dataSource.map((dataSourceItem) => {
-    const match = dataSourceItem.title.match(searchValue);
+    const match = dataSourceItem.title.toLowerCase().match(searchValue.toLowerCase());
     if (match) { dataSourceItem.weight = 1; } else { dataSourceItem.weight = -1; }
+    dataSourceItem.payload = this.filerNavItem(dataSourceItem);
     return dataSourceItem;
   });
   this.setState({ dataSource: weightDataSource });
+}
+
+filerNavItem(navListItem) {
+  const { weight: titleWeight, payload } = navListItem;
+  const filterPayload = payload.map((navItem) => {
+    const weight = this.calNavItemWeight(navItem, titleWeight);
+    navItem.priority = weight;
+    this.storeMatchest(navItem);
+    return navItem;
+  });
+  return filterPayload;
+}
+
+calNavItemWeight(navItem, titleWeight) {
+  const { searchValue } = this.state;
+  const itemTitle = navItem.text.toLowerCase();
+  const matchValue = searchValue.toLowerCase();
+  let navItemWeight = 0;
+  if (titleWeight < 0 && (!itemTitle.match(matchValue))) { navItemWeight = -2; }
+  if (titleWeight < 0 && (itemTitle.match(matchValue))) { navItemWeight = 1; }
+  if (titleWeight > 0 && (!itemTitle.match(matchValue))) { navItemWeight = 0; }
+  if (titleWeight > 0 && (itemTitle.match(matchValue))) { navItemWeight = 2; }
+  if (!searchValue) { navItemWeight = 0; }
+  return navItemWeight;
+}
+
+storeMatchest(navItem) {
+  const { priority: navItemWeight } = navItem;
+  const { priority: matchestWeight } = this.matchestNav;
+  if (navItemWeight > matchestWeight) { this.matchestNav = navItem; }
+  console.log(this.matchestNav);
+}
+
+initMatchest() {
+  const [init] = navListDataSource;
+  const { payload } = init;
+  const _initMatchest = payload[0];
+  this.matchestNav = _initMatchest;
 }
 
 
