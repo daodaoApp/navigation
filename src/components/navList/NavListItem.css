@@ -3,13 +3,14 @@
   text-align: center;
   width: 200px;
   margin: 20px;
+  box-sizing: content-box;
   border-radius: 5%;
+  background-color: rgba(0,132,225, .3);
 }
 
 .nav_list_item >h3{
   margin: 0;
   padding: 10px;
-  background-color: rgba(0,132,225, .3);
 }
 
 .nav_list_item_content a{
@@ -20,6 +21,7 @@
   border-top: 1px solid #DADADA;
   color: black;
   transition: .3s;
+  background: #FFF;
 }
 
 .nav_list_item_content a:visited{ color: black; }
