@@ -70,9 +70,9 @@ calNavItemWeight(navItem, titleWeight) {
   const matchValue = searchValue.toLowerCase();
   let navItemWeight = 0;
   if (titleWeight < 0 && (!itemTitle.match(matchValue))) { navItemWeight = -2; }
-  if (titleWeight < 0 && (itemTitle.match(matchValue))) { navItemWeight = 1; }
+  if (titleWeight < 0 && (itemTitle.match(matchValue))) { navItemWeight = 2; }
   if (titleWeight > 0 && (!itemTitle.match(matchValue))) { navItemWeight = 0; }
-  if (titleWeight > 0 && (itemTitle.match(matchValue))) { navItemWeight = 2; }
+  if (titleWeight > 0 && (itemTitle.match(matchValue))) { navItemWeight = 3; }
   if (!searchValue) { navItemWeight = 0; }
   return navItemWeight;
 }
@@ -116,6 +116,7 @@ handleEnterJump(e) {
 
 render() {
   const { searchValue, dataSource } = this.state;
+  console.log(this.matchestNav);
   return (
     <React.Fragment>
       <Header slogan="DFG-内网导航" value={searchValue} onChange={this.onSearchValueChange} autoFoucs />

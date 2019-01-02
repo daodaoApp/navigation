@@ -14,23 +14,24 @@ constructor(props) {
   this.state = {};
   this.renderNavList = this.renderNavList.bind(this);
   this.renderNoContent = this.renderNoContent.bind(this);
-  this.filterDataSource = this.filterDataSource.bind(this);
+}
+
+
+renderNavList() {
+  const { dataSource } = this.props;
+  if (dataSource.length < 1) { return this.renderNoContent(); }
+  const filterDataSource = dataSource.map(item => item).filter(dataSourceItem => dataSourceItem.payload.length > 0);
+  // const filterDataSourceByNavItem = filterDataSource.map((dataSourceItem) => {
+  //   const { payload } = dataSourceItem;
+  //   dataSourceItem.payload = payload.map(item => item).filter(payloadItem => payloadItem.priority >= 0);
+  //   return dataSourceItem;
+  // });
+  return filterDataSource.map(dataSourceItem => <NavListItem navList={dataSourceItem} key={dataSourceItem.title} />);
 }
 
 renderNoContent() {
   const { noContentDesc } = this.props;
   return <div className="nav_list_blank">{noContentDesc}</div>;
-}
-
-renderNavList() {
-  const { dataSource } = this.props;
-  if (dataSource.length < 1) { return this.renderNoContent(); }
-  const filterDataSource = dataSource.filter(dataSourceItem => dataSourceItem.payload.length > 0);
-  return filterDataSource.map(dataSourceItem => <NavListItem navList={dataSourceItem} key={dataSourceItem.title} />);
-}
-
-filterDataSource() {
-  const { dataSource, searchValue } = this.props;
 }
 
 render() {

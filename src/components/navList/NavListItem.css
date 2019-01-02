@@ -3,6 +3,13 @@
   text-align: center;
   width: 200px;
   margin: 20px;
+  border-radius: 5%;
+}
+
+.nav_list_item >h3{
+  margin: 0;
+  padding: 10px;
+  background-color: rgba(0,132,225, .3);
 }
 
 .nav_list_item_content a{
@@ -16,4 +23,16 @@
 }
 
 .nav_list_item_content a:visited{ color: black; }
+
+.nav_list_item_content a.super{
+  color: white;
+  background-color: #ff7a45;
+}
+
+.nav_list_item_content a.high{
+  color: white;
+  background-color: #ffc53d;
+}
+
+
 .nav_list_item_content a:hover{ color: #00BCFF; }

@@ -1,5 +1,4 @@
 .nav_list{
-  border: 1px solid red;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
