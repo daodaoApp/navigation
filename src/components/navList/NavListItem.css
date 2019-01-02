@@ -4,7 +4,9 @@
   width: 200px;
   margin: 20px;
   box-sizing: content-box;
-  border-radius: 5%;
+  /* border-radius: 5%; */
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
   background-color: rgba(0,132,225, .3);
 }
 

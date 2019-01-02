@@ -58,6 +58,9 @@ render() {
             onChange={this.onChange}
             ref={this.input}
           />
+          <div className="author">
+            Created By ChrisWen.
+          </div>
         </div>
       </div>
     </header>
