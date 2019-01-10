@@ -59,7 +59,7 @@ render() {
             ref={this.input}
           />
           <div className="author">
-            Created By ChrisWen.
+            Contact Me: chriswen@dae.org
           </div>
         </div>
       </div>
