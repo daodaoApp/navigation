@@ -4,6 +4,12 @@ import Header from '../../components/header';
 import NavList from '../../components/navList';
 import navListDataSource from '../../../_config';
 
+const initNavListDataSource = navListDataSource.map((item) => {
+  const { payload } = item;
+  item.payload = payload.map((listItem) => { listItem.priority = 0; return listItem; });
+  return item;
+});
+console.log(initNavListDataSource);
 export default class MainPage extends React.Component {
 static propTypes = {}
 
@@ -12,7 +18,7 @@ constructor(props) {
   super(props);
   this.state = {
     searchValue: '',
-    dataSource: navListDataSource,
+    dataSource: initNavListDataSource,
     target: { link: 'https://www.baidu.com' },
   };
   this.onSearchValueChange = this.onSearchValueChange.bind(this);
@@ -97,7 +103,7 @@ storeJumplink() {
 }
 
 initMatchest() {
-  const [init] = navListDataSource;
+  const [init] = initNavListDataSource;
   const { payload } = init;
   const _initMatchest = payload[0];
   this.matchestNav = _initMatchest;

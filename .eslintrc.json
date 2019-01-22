@@ -12,6 +12,7 @@
         "jsx-a11y/label-has-associated-control": "off",
         "no-param-reassign": "off",
         "max-len":["error", 200],
-        "no-underscore-dangle":"off"
+        "no-underscore-dangle":"off",
+        "no-return-assign":"off"
     }
 }

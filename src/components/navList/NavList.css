@@ -1,15 +1,16 @@
 .nav_list{
   display: flex;
-  justify-content:center;
+  justify-content:flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
+  padding: 0 200px;
 }
 
 .nav_list_blank{
   margin-top: 20%;
   height: 100px;
   text-align: center;
-  font-size: 24px;
+  font-size: 14px;
   line-height: 100px;
   width: 100%;
   color: white;
